@@ -1,0 +1,84 @@
+/* === GLOBAL THEME === */
+:root {
+  --bg-gradient: linear-gradient(135deg, #0c3c56 0%, #1D2A42 50%, #0a2f44 100%);
+  --card-bg: rgba(30, 41, 59, 0.6);
+  --card-border: rgba(71, 85, 105, 0.5);
+  --text-main: #fff;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --radius: 12px;
+}
+
+/* === LAYOUT === */
+.container {
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  padding: 24px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* === BUTTONS === */
+.button {
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: var(--accent-hover);
+}
+
+/* === INPUTS === */
+.input, .select, .textarea {
+  width: 100%;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(71, 85, 105, 0.8);
+  border-radius: var(--radius);
+  color: var(--text-main);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  border-color: var(--accent);
+}
+
+/* === STATUS BADGES === */
+.status {
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+
+.status.open { background: #2563eb; }
+.status.inProgress { background: #d97706; }
+.status.resolved { background: #16a34a; }
