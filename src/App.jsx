@@ -46,6 +46,11 @@ function App() {
   const [filterStatus, setFilterStatus] = useState('All');
   const [showAddModal, setShowAddModal] = useState(false);
   const [showCommentModal, setShowCommentModal] = useState(false);
+  const [showPersonalizationModal, setShowPersonalizationModal] = useState(false);
+  const [companyName, setCompanyName] = useState('Volhard');
+  const [userName, setUserName] = useState('');
+  const [tempCompanyName, setTempCompanyName] = useState('');
+  const [tempUserName, setTempUserName] = useState('');
 
   // Form states
   const [newTicket, setNewTicket] = useState({
@@ -125,6 +130,25 @@ function App() {
     }
   };
 
+  const handleStartDemo = () => {
+    setShowPersonalizationModal(true);
+  };
+
+  const handlePersonalizationSubmit = () => {
+    if (!tempCompanyName.trim()) {
+      alert('Please enter your company name');
+      return;
+    }
+    if (!tempUserName.trim()) {
+      alert('Please enter your name');
+      return;
+    }
+    setCompanyName(tempCompanyName.trim());
+    setUserName(tempUserName.trim());
+    setShowPersonalizationModal(false);
+    setCurrentPage('tickets');
+  };
+
   const filteredTickets = tickets.filter(ticket => {
     const matchesSearch = ticket.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          ticket.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -147,7 +171,7 @@ function App() {
             </p>
             <button 
               style={styles.btnPrimary}
-              onClick={() => setCurrentPage('tickets')}
+              onClick={handleStartDemo}
               onMouseEnter={(e) => e.target.style.transform = 'translateY(-2px)'}
               onMouseLeave={(e) => e.target.style.transform = 'translateY(0)'}
             >
@@ -156,6 +180,42 @@ function App() {
             <p style={styles.welcomeFooter}>by Volhard Consulting</p>
           </div>
         </div>
+
+        {showPersonalizationModal && (
+          <div style={styles.modalOverlay} onClick={() => setShowPersonalizationModal(false)}>
+            <div style={{...styles.glassCard, ...styles.modalContent}} onClick={(e) => e.stopPropagation()}>
+              <h3 style={styles.modalTitle}>Let's personalize your experience a bit</h3>
+              <div style={styles.formGroup}>
+                <label style={styles.label}>What's the name of your company?</label>
+                <input
+                  type="text"
+                  style={styles.formInput}
+                  placeholder="Enter company name"
+                  value={tempCompanyName}
+                  onChange={(e) => setTempCompanyName(e.target.value)}
+                />
+              </div>
+              <div style={styles.formGroup}>
+                <label style={styles.label}>What's your name?</label>
+                <input
+                  type="text"
+                  style={styles.formInput}
+                  placeholder="Enter your name"
+                  value={tempUserName}
+                  onChange={(e) => setTempUserName(e.target.value)}
+                />
+              </div>
+              <div style={styles.modalActions}>
+                <button style={styles.btnSecondary} onClick={() => setShowPersonalizationModal(false)}>
+                  Skip
+                </button>
+                <button style={styles.btnPrimary} onClick={handlePersonalizationSubmit}>
+                  Continue
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -166,7 +226,7 @@ function App() {
       <div style={styles.pageContainer}>
         <div style={styles.ticketsContainer}>
           <header style={styles.header}>
-            <h2 style={styles.headerTitle}>Volhard Tickets</h2>
+            <h2 style={styles.headerTitle}>{companyName} Tickets</h2>
             <div style={styles.headerActions}>
               <button style={styles.btnSecondary}>
                 <span style={styles.userIcon}>👤</span>
@@ -324,7 +384,7 @@ function App() {
       <div style={styles.pageContainer}>
         <div style={styles.detailContainer}>
           <header style={styles.header}>
-            <h2 style={styles.headerTitle}>Volhard Tickets</h2>
+            <h2 style={styles.headerTitle}>{companyName} Tickets</h2>
             <button 
               style={styles.btnPrimary}
               onClick={() => setCurrentPage('tickets')}
