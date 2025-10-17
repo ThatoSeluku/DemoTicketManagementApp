@@ -610,11 +610,9 @@ function App() {
       <div style={styles.pageContainer}>
         <div style={styles.welcomeContainer}>
           <div style={{...styles.glassCard, ...styles.welcomeCard}}>
-            <h1 style={styles.welcomeTitle}>Tick, Tick, Tickets?</h1>
-            <p style={styles.welcomeSubtitle}>(Definitely NOT) a lightweight alternative to ServiceNow </p>
-            <p style={styles.welcomeDescription}>
-Built on Microsoft Power Platform. Try our
-              demo before reaching out.
+            <h1 style={styles.welcomeTitle}>Chaos to Clarity</h1>
+            <p style={styles.welcomeSubtitle}>Log it. Track it. Close it. </p>
+            <p style={styles.welcomeDescription}>Try our demo before reaching out.
             </p>
             <button 
               style={styles.btnPrimary}
