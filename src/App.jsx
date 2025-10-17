@@ -612,8 +612,8 @@ function App() {
           <div style={{...styles.glassCard, ...styles.welcomeCard}}>
             <h1 style={styles.welcomeTitle}>Chaos to Clarity</h1>
             <p style={styles.welcomeSubtitle}>Log it. Track it. Close it. </p>
-            <p style={styles.welcomeDescription}>Try our demo before reaching out.
-            </p>
+            {/* <p style={styles.welcomeDescription}>Try our demo before reaching out.
+            </p> */}
             <button 
               style={styles.btnPrimary}
               onClick={handleStartDemo}
